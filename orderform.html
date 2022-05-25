@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <title>Order form</title>
+<script>
+// Defining a function to display error message
+function printError(elemId, hintMsg) {
+    document.getElementById(elemId).innerHTML = hintMsg;
+}
+
+// Defining a function to validate form 
+function validateForm() {
+    // Retrieving the values of form elements 
+    var orderdate = document.contactForm.orderdate.value;
+    var rdate = document.contactForm.rdate.value;
+    var rname = document.contactForm.rname.value;
+    var mobile = document.contactForm.mobile.value;
+    var reason = document.contactForm.reason.value;
+    var pname = document.contactForm.pname.value;
+    var pname = document.contactForm.pname.value;
+    var pspecification = document.contactForm.pspecification.value;
+    var qty = document.contactForm.qty.value;
+    var comments = document.contactForm.comments.value;
+    var signature1 = document.contactForm.signature1.value;
+    var sigdate = document.contactForm.sigdate.value;
+    var signature2 = document.contactForm.signature2.value;
+    var sigdate1 = document.contactForm.sigdate1.value;
+    var department = document.contactForm.department.value;
+
+	// Defining error variables with a default value
+    var orderErr = rdateErr = rnameErr = reasonErr = mobileErr = depErr = pnameErr= specErr = qtyErr = commentsErr = sig1Err = sigdateErr = sig2Err = sigdate2Err = true;
+    
+    // Validate oder date
+    if(orderdate == "") {
+        printError("orderErr", "Please enter Order date");
+    } else {
+        var regex = /^[a-zA-Z\s]+$/;                
+        if(regex.test(orderdate) === false) {
+            printError("orderErr", "Please enter a valid date");
+        } else {
+            printError("orderErr", "");
+            orderErr = false;
+        }
+    }
+    
+    // Validate required date
+    if(rdate == "") {
+        printError("rdateErr", "Please enter required date");
+    } else {
+        // Regular expression for basic email validation
+        var regex = /^\S+@\S+\.\S+$/;
+        if(regex.test(rdate) === false) {
+            printError("rdateErr", "Please enter required date");
+        } else{
+            printError("rdateErr", "");
+            rdateErr = false;
+        }
+    }
+    
+    //validate requestor name
+     if(rname == "") {
+        printError("rnameErr", "Please enter requestor's name");
+    } else {
+        // Regular expression for basic email validation
+        var regex = /^\S+@\S+\.\S+$/;
+        if(regex.test(rname) === false) {
+            printError("rnameErr", "Please enter a valid name");
+        } else{
+            printError("rnameErr", "");
+            rnameErr = false;
+        }
+    }
+    
+    
+    //validate reason
+         if(reason == "") {
+        printError("reasonErr", "Please enter reason/purpose");
+    } else {
+        // Regular expression for basic email validation
+        var regex = /^\S+@\S+\.\S+$/;
+        if(regex.test(reason) === false) {
+            printError("reasonErr", "Please enter a valid reason");
+        } else{
+            printError("reasonErr", "");
+            reasonErr = false;
+        }
+    }
+    
+    // Validate mobile number
+    if(mobile == "") {
+        printError("mobileErr", "Please enter your mobile number");
+    } else {
+        var regex = /^[1-9]\d{9}$/;
+        if(regex.test(mobile) === false) {
+            printError("mobileErr", "Please enter a valid 10 digit mobile number");
+        } else{
+            printError("mobileErr", "");
+            mobileErr = false;
+        }
+    }
+    
+    // Validate country
+    if(department == "Select") {
+        printError("depErr", "Please select your department");
+    } else {
+        printError("depErr", "");
+        depErr = false;
+    }
+    
+     //validate product name
+         if(pname == "") {
+        printError("pnameErr", "Please enter reason/purpose");
+    } else {
+        // Regular expression for basic email validation
+        var regex = /^\S+@\S+\.\S+$/;
+        if(regex.test(pname) === false) {
+            printError("pnameErr", "Please enter a valid reason");
+        } else{
+            printError("pnameErr", "");
+            pnameErr = false;
+        }
+    }
+   
+   
+    //validate reason
+         if(pspecification == "") {
+        printError("specErr", "Please enter product specification");
+    } else {
+        // Regular expression for basic email validation
+        var regex = /^\S+@\S+\.\S+$/;
+        if(regex.test(pspecification) === false) {
+            printError("specErr", "Please enter product specification");
+        } else{
+            printError("specErr", "");
+            specErr = false;
+        }
+    }
+   
+   
+    //validate Qty
+         if(qty == "") {
+        printError("qtyErr", "Please enter Quantity");
+    } else {
+        // Regular expression for basic email validation
+        var regex = /^\S+@\S+\.\S+$/;
+        if(regex.test(qty) === false) {
+            printError("qtyErr", "Please enter Quantity");
+        } else{
+            printError("qtyErr", "");
+            qtyErr = false;
+        }
+    }
+   
+       //validate Qty
+         if(comments == "") {
+        printError("commentsErr", "Please enter Comments");
+    } else {
+        // Regular expression for basic email validation
+        var regex = /^\S+@\S+\.\S+$/;
+        if(regex.test(comments) === false) {
+            printError("commentsErr", "Please enter Comments");
+        } else{
+            printError("commentsErr", "");
+            commentsErr = false;
+        }
+    }
+    
+    //validate Signature 1
+         if(signature1 == "") {
+        printError("sig1Err", "Please enter Signature");
+    } else {
+        // Regular expression for basic email validation
+        var regex = /^\S+@\S+\.\S+$/;
+        if(regex.test(signature1) === false) {
+            printError("sig1Err", "Please enter Signature");
+        } else{
+            printError("sig1Err", "");
+            sig1Err = false;
+        }
+    }
+    
+    //validate date
+         if(sigdate == "") {
+        printError("sigdateErr", "Please enter date");
+    } else {
+        // Regular expression for basic email validation
+        var regex = /^\S+@\S+\.\S+$/;
+        if(regex.test(sigdate) === false) {
+            printError("sigdateErr", "Please enter date");
+        } else{
+            printError("sigdateErr", "");
+            sigdateErr = false;
+        }
+    }
+    
+    //validate signature2
+         if(signature2 == "") {
+        printError("sig2Err", "Please enter Signature");
+    } else {
+        // Regular expression for basic email validation
+        var regex = /^\S+@\S+\.\S+$/;
+        if(regex.test(signature2) === false) {
+            printError("sig2Err", "Please enter Signature");
+        } else{
+            printError("sig2Err", "");
+            sig2Err = false;
+        }
+    }
+    
+    //validate Date
+         if(sigdate1 == "") {
+        printError("sigdate2Err", "rcommentsErrenter Comments");
+    } else {
+        // Regular expression for basic email validation
+        var regex = /^\S+@\S+\.\S+$/;
+        if(regex.test(sigdate1) === false) {
+            printError("sigdate2Err", "Please enter Comments");
+        } else{
+            printError("sigdate2Err", "");
+            sigdate2Err = false;
+        }
+    }
+    
+    
+    // Prevent the form from being submitted if there are any errors
+    if((orderErr || rdateErr || rnameErr || reasonErr || mobileErr || depErr || pnameErr || specErr || qtyErr || commentsErr || sig1Err || sigdateErr || sig2Err || sigdate2Err) == true) {
+       return false;
+    } else {
+        // Creating a string from input data for preview
+        var dataPreview = "You've entered the following details: \n" +
+                          "Full Name: " + orderdate + "\n" +
+                          "Email Address: " + rdate + "\n";
+        if(hobbies.length) {
+            //dataPreview aggresive+= "Hobbies: " + hobbies.join(", ");
+        }
+        // Display input data in a dialog box before submitting the form
+        alert(dataPreview);
+    }
+        
+};    
+</script>
+</head>
+<body>
+     <div class="container">
+    <h4>Computer components order form</h4>
+<form name="contactForm" onsubmit="return validateForm()" action="#" method="post">
+    <h2>Application Form</h2>
+       <div class="row">
+    <div class="col">
+        <label for="exampleFormControlTextarea3">Order Date</label>
+        <input type="date" class="form-control" name="orderdate">
+        <div class="error" id="orderErr"></div>
+    </div>
+   <div class="col">
+        <label for="exampleFormControlTextarea3">Required Date</label>
+        <input type="date" class="form-control" name="rdate">
+        <div class="error" id="rdateErr"></div>
+    </div></div>
+    <br/>
+    <div class="row">
+          <div class="col">
+      <label for="exampleFormControlTextarea3">Requestor name</label>
+     <input type="text"  class="form-control" name="rname">
+        <div class="error" id="rnameErr"></div>
+    </div>
+    
+         <div class="col">
+        <label>Mobile Number</label>
+        <input type="text" class="form-control" name="mobile" maxlength="10">
+        <div class="error" id="mobileErr"></div>
+    </div></div>
+    
+    <div class="row">
+        <div class="col">
+     <label for="exampleFormControlTextarea3">Purpose of request</label>
+      <textarea class="form-control" name="reason" rows="1"></textarea>
+      <div class="error" id="reasonErr"></div>
+      </div>
+      
+    <div class="col">
+        <label>Department</label>
+        <select name="department">
+            <option class="dropdown-item" >Select</option>
+            <option class="dropdown-item" >Technical</option>
+            <option class="dropdown-item" >Sales</option>
+            <option class="dropdown-item" >Commercial</option>
+        </select>
+        <div class="error" id="depErr"></div>
+    </div>
+  
+  </div>
+  
+    <h3>PRODUCT/ SERVICE REQUIREMENT</h3>
+  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Item Number#</th>
+      <th scope="col">Product Name</th>
+      <th scope="col">Product Specification</th>
+      <th scope="col">Quantity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td><input type="text" class="form-control" placeholder="Product Name" name="pname">
+      <div class="error" id="pnameErr"></div>
+      </td>
+      <td><textarea class="form-control" name="pspecification" rows="1"></textarea>
+      <div class="error" id="specErr"></div>
+      </td>
+      <td><input type="text" class="form-control" name="qty" placeholder="Quantity">
+      <div class="error" id="qtyErr"></div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="form-group">
+  <label for="exampleFormControlTextarea3">Comments</label>
+  <textarea class="form-control" id="#" name="comments" rows="1"></textarea>
+   <div class="error" id="commentsErr"></div>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Requestor</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col">Authorized By</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <td>
+            <div class="mb-3">
+           <label for="formFile" class="form-label">Add signature</label>
+            <input class="form-control" type="file" id="formFile" name="signature1">
+            <div class="error" id="sig1Err"></div>
+          </div>
+        </td>
+      <td><label for="formFile" class="form-label">Date</label>
+          <input type="date" class="form-control" name="sigdate" placeholder="Date">
+          <div class="error" id="sigdateErr"></div>
+          </td>
+      <td>
+            <div class="mb-3">
+           <label for="formFile" class="form-label">Add signature</label>
+            <input class="form-control" type="file" id="formFile" name="signature2">
+            <div class="error" id="sig2Err"></div>
+          </div>
+        </td>
+
+      <td>
+          <label for="formFile" class="form-label">Date</label>
+          <input type="date" id="" class="form-control" name="sigdate1" placeholder="Date">
+          <div class="error" id="sigdate2Err"></div>
+          </td>
+    </tr>
+  </tbody>
+</table>
+    <div class="row">
+        <input  class="btn btn-primary" type="submit" value="Submit">
+    </div>
+</form>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+</html>
